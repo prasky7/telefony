@@ -6,7 +6,7 @@
 
 <!-- obsah -->
 <div class="text-center">
-<h2 style="color:red;"> <i class="fas fa-user-shield fa-2x" style="color:green;"></i> <?php echo $currentPage; ?></h2>
+<h2> <i class="fas fa-user-shield fa-2x" style="color:green;"></i> <?php echo $currentPage; ?></h2>
 <br>
 </div>
 
@@ -18,6 +18,67 @@
        echo ErrorMessage();
        echo SuccessMessage();
       ?>
+
+      <!-- hledani  start -->
+      <script type="text/javascript"
+       src="js/jquery-3.5.1.min.js"></script>
+      <script type="text/javascript">
+      $(document).ready(function(){
+
+        // Search all columns
+        $('#txt_searchall').keyup(function(){
+          // Search Text
+          var search = $(this).val();
+
+      	// Hide all table tbody rows
+          $('table tbody tr').hide();
+
+          // Count total search result
+          var len = $('table tbody tr:not(.notfound) td:contains("'+search+'")').length;
+
+          if(len > 0){
+            // Searching text in columns and show match row
+            $('table tbody tr:not(.notfound) td:contains("'+search+'")').each(function(){
+              $(this).closest('tr').show();
+            });
+          }else{
+            $('.notfound').show();
+          }
+
+        });
+
+        // Search on name column only
+        $('#txt_name').keyup(function(){
+          // Search Text
+          var search = $(this).val();
+
+          // Hide all table tbody rows
+          $('table tbody tr').hide();
+
+          // Count total search result
+          var len = $('table tbody tr:not(.notfound) td:nth-child(2):contains("'+search+'")').length;
+
+          if(len > 0){
+            // Searching text in columns and show match row
+            $('table tbody tr:not(.notfound) td:contains("'+search+'")').each(function(){
+      		 $(this).closest('tr').show();
+            });
+          }else{
+            $('.notfound').show();
+          }
+
+        });
+      });
+      </script>
+
+
+      <div class="text-center">
+        <div class="form-group">
+        <input class="form-control mr-2" type="text" name="Search" id="txt_searchall" placeholder=" Zadejte hledáný kontakt ">
+      <!-- <input type='text'  placeholder=' Zadejte hledáný kontakt '>&nbsp; <br><br><br> -->
+      </div>
+      </div>
+      <!-- hledani  end -->
 
        <table class="table table-striped table-hover">
          <thead class="thead-dark">

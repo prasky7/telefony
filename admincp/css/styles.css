@@ -1,0 +1,19 @@
+input::-webkit-input-placeholder {
+color: red !important;
+font-weight: 900;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+color: red !important;
+font-weight: 900;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+color: red !important;
+font-weight: 900;
+}
+
+input:-ms-input-placeholder {
+color: red !important;
+font-weight: 900;
+}
