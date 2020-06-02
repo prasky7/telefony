@@ -13,13 +13,21 @@ if(isset($_POST["Submit"])){
   $voip       = $_POST["voip"];
   $lokalita   = $_POST["kancelar"];
   $kancelar   = $_POST["role"];
+  $groupid    = $_POST["groups"];
+
 
   if(empty($firstname)){
     $_SESSION["ErrorMessage"]= "Jméno nesmí být prázdné";
-    Redirect_to("new1.php");
+    Redirect_to("new.php");
   }elseif (empty($lastname)){
     $_SESSION["ErrorMessage"]= "Příjmení nesmí být prázdné";
-    Redirect_to("new1.php");
+    Redirect_to("new.php");
+  }elseif (empty($pozice)){
+    $_SESSION["ErrorMessage"]= "Pozice nesmí být prázdná";
+    Redirect_to("new.php");
+  }elseif (empty($kancelar)){
+    $_SESSION["ErrorMessage"]= "Pobočka nesmí být prázdná";
+    Redirect_to("new.php");
   }else{
     // pokude je vse OK vloz data
     global $ConnectingDB;
@@ -38,10 +46,15 @@ if(isset($_POST["Submit"])){
     $Execute=$stmt->execute();
     if($Execute){
       $_SESSION["SuccessMessage"]="Post with id : " .$ConnectingDB->lastInsertId()." added Successfully";
-      Redirect_to("new1.php");
+      $last_id = $ConnectingDB->lastInsertId();
+      $sql1 = "INSERT INTO ab_address_in_groups (id,group_id)";
+      $sql1 .= "VALUES($last_id,$groupid)";
+      $stmt1 = $ConnectingDB->prepare($sql1);
+      $Execute1=$stmt1->execute();
+      Redirect_to("new.php");
     }else {
       $_SESSION["ErrorMessage"]= "Something went wrong. Try Again !";
-      Redirect_to("new1.php");
+      Redirect_to("new.php");
     }
   }
 }
@@ -60,7 +73,7 @@ if(isset($_POST["Submit"])){
        echo ErrorMessage();
        echo SuccessMessage();
        ?>
-      <form class="" action="new1.php" method="post">
+      <form class="" action="new.php" method="post">
         <div class="card bg-secondary text-light mb-3">
           <div class="card-body bg-dark">
             <div class="form-group">
@@ -81,11 +94,11 @@ if(isset($_POST["Submit"])){
             </div>
             <div class="form-group">
               <label for="work"> <span class="FieldInfo"> Pevná linka: </span></label>
-               <input class="form-control" type="text" name="work" id="work" placeholder="Vyplňte zde telefon..." value="">
+               <input class="form-control" type="text" name="work" id="work" placeholder="Vyplňte zde telefon ve formátu XXX XXX XXX" value="">
             </div>
             <div class="form-group">
               <label for="mobile"> <span class="FieldInfo"> Mobil: </span></label>
-               <input class="form-control" type="text" name="mobile" id="mobile" placeholder="Vyplňte zde mobil..." value="">
+               <input class="form-control" type="text" name="mobile" id="mobile" placeholder="Vyplňte zde mobil ve formátu XXX XXX XXX" value="">
             </div>
             <div class="form-group">
               <label for="voip"> <span class="FieldInfo"> VoIP: </span></label>
@@ -98,9 +111,17 @@ if(isset($_POST["Submit"])){
             <div class="form-group">
               <label for="kancelar"> <span class="FieldInfo"> Vyberte pobočku: </span></label>
                <select class="form-control" id="kancelar"  name="kancelar">
-                  <option>Praha</option>
-                  <option>Brno</option>
-               </select>
+                 <?php
+                 global $ConnectingDB;
+                 $sql  = "SELECT * FROM ab_group_list";
+                 $stmt = $ConnectingDB->query($sql);
+                 while ($DataRows = $stmt->fetch()) {
+                   $groupid        = $DataRows["id"];
+                   $groupname = $DataRows["group_name"];
+                 ?>
+                  <option value="<?php echo $groupid;?>"> <?php echo $groupname; ?></option>
+                  <?php } ?>
+              </select>
             </div>
             <div class="row">
               <div class="col-lg-6 mb-2">
