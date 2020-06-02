@@ -31,7 +31,7 @@ if(isset($_POST["Submit"])){
     // pokude je vse OK vloz data
     global $ConnectingDB;
     $sql = "UPDATE ab_addressbook
-            SET firstname='$firstnameU', lastname=':lastName', title=':Title', pozice=':Pozice', work=':Work', mobile=':Mobile', voip=':Voip', kancelar=':Lokalita', role=':Kancelar'
+            SET firstname='$firstnameU', lastname='$lastnameU', title='$titleU', pozice='$poziceU', work='$workU', mobile='$mobileU', voip='$voipU', kancelar='$lokalitaU', role='$kancelarU'
             WHERE id='$mojeid'";
     $stmt = $ConnectingDB->prepare($sql);
     $stmt->bindValue(':firstName',$firstnameU);
