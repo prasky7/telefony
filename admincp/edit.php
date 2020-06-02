@@ -48,11 +48,11 @@ if(isset($_POST["Submit"])){
       $_SESSION["SuccessMessage"]="Kontakt je aktualizovaný";
       // prirad posledni ID ke zvolene pobocce
       // $sql1 = "UPDATE ab_address_in_groups
-      //         group_id='$groupid'
+      //         SET group_id='$groupidU'
       //         WHERE id='$mojeid'";
       // $stmt1 = $ConnectingDB->prepare($sql1);
       // $Execute1=$stmt1->execute();
-      Redirect_to("index.php");
+      // Redirect_to("index.php");
     }else {
       $_SESSION["ErrorMessage"]= "Something went wrong. Try Again !";
       Redirect_to("edit.php");
