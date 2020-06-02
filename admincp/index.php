@@ -74,7 +74,7 @@
 
       <div class="text-center">
         <div class="form-group">
-        <input class="form-control mr-2" type="text" name="Search" id="txt_searchall" placeholder=" Zadejte hledáný kontakt ">
+        <input class="form-control mr-2" type="text" name="Search" id="txt_searchall" placeholder=" Zadejte hledáný kontakt ! Pozor na malá a velká písmena !">
       <!-- <input type='text'  placeholder=' Zadejte hledáný kontakt '>&nbsp; <br><br><br> -->
       </div>
       </div>
