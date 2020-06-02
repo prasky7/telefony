@@ -25,9 +25,6 @@ if(isset($_POST["Submit"])){
   }elseif (empty($pozice)){
     $_SESSION["ErrorMessage"]= "Pozice nesmí být prázdná";
     Redirect_to("new.php");
-  }elseif (empty($kancelar)){
-    $_SESSION["ErrorMessage"]= "Pobočka nesmí být prázdná";
-    Redirect_to("new.php");
   }else{
     // pokude je vse OK vloz data
     global $ConnectingDB;
@@ -46,6 +43,7 @@ if(isset($_POST["Submit"])){
     $Execute=$stmt->execute();
     if($Execute){
       $_SESSION["SuccessMessage"]="Kontakt: " . $fistname . " " .$lastname. "s  ID: " .$ConnectingDB->lastInsertId()." je  přidaný do pobočky ID: " . $groupid;
+      // prirad posledni ID ke zvolene pobocce
       $last_id = $ConnectingDB->lastInsertId();
       $sql1 = "INSERT INTO ab_address_in_groups (id,group_id)";
       $sql1 .= "VALUES($last_id,$groupid)";

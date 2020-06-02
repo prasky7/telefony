@@ -1,3 +1,8 @@
 style="background-color: #eee;"
 style="background-color: red;"
 style="color:red;"
+
+style="min-height:400px;"
+
+?id=<?php echo $mojeid; ?>
+localhost/telefony/admincp/edit.php?id=700

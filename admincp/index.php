@@ -146,10 +146,10 @@
            <?php echo html_entity_decode($lokalita); ?>
        </td>
            <td>
-             <a href="edit.php?id=<?php echo $Id; ?>"><span class="btn btn-warning">Editovat</span></a>
+             <a href="edit.php?id=<?php echo $id; ?>"><span class="btn btn-warning">Editovat</span></a>
            </td>
            <td>
-             <a href="delete.php?id=<?php echo $Id; ?>"><span class="btn btn-danger">Smazat</span></a>
+             <a href="delete.php?id=<?php echo $id; ?>"><span class="btn btn-danger">Smazat</span></a>
            </td>
              </tr>
              </tbody>

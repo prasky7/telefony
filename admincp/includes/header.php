@@ -29,12 +29,12 @@
                 <li class="nav-item">
                   <a href="new.php" class="nav-link"> <i class="fas fa-plus text-success"></i> Nový kontakt</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a href="edit.php" class="nav-link"> <i class="fas fa-edit text-success"></i> Editovat kontakt</a>
                 </li>
                 <li class="nav-item">
                   <a href="delete.php" class="nav-link"> <i class="fas fa-minus text-danger"></i> Smazat kontakt</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                   <a href="pobocka.php" class="nav-link"> <i class="fas fa-exchange-alt text-success"></i> Změna pobočky</a>
                 </li>
