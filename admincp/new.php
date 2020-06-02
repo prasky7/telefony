@@ -45,7 +45,7 @@ if(isset($_POST["Submit"])){
     $stmt->bindValue(':Kancelar',$kancelar);
     $Execute=$stmt->execute();
     if($Execute){
-      $_SESSION["SuccessMessage"]="Post with id : " .$ConnectingDB->lastInsertId()." added Successfully";
+      $_SESSION["SuccessMessage"]="Kontakt: " . $fistname . " " .$lastname. "s  ID: " .$ConnectingDB->lastInsertId()." je  přidaný do pobočky ID: " . $groupid;
       $last_id = $ConnectingDB->lastInsertId();
       $sql1 = "INSERT INTO ab_address_in_groups (id,group_id)";
       $sql1 .= "VALUES($last_id,$groupid)";
@@ -109,18 +109,20 @@ if(isset($_POST["Submit"])){
                <input class="form-control" type="text" name="role" id="role" placeholder="Vyplňte zde číslo kanceláře..." value="">
             </div>
             <div class="form-group">
-              <label for="kancelar"> <span class="FieldInfo"> Vyberte pobočku: </span></label>
-               <select class="form-control" id="kancelar"  name="kancelar">
-                 <?php
-                 global $ConnectingDB;
-                 $sql  = "SELECT * FROM ab_group_list";
-                 $stmt = $ConnectingDB->query($sql);
-                 while ($DataRows = $stmt->fetch()) {
-                   $groupid        = $DataRows["id"];
-                   $groupname = $DataRows["group_name"];
-                 ?>
-                  <option value="<?php echo $groupid;?>"> <?php echo $groupname; ?></option>
-                  <?php } ?>
+              <label for="kancelar"> <span class="FieldInfo"> Lokalita: </span></label>
+               <input class="form-control" type="text" name="kancelar" id="kancelar" placeholder="Vyplňte zde lokalitu..." value="">
+            </div>
+            <div class="form-group">
+              <label for="groups"> <span class="FieldInfo"> Vyberte pobočku: </span></label>
+               <select class="form-control" id="groups"  name="groups">
+                <option value="2">Ústředí VOZP ČR</option>
+               	<option value="3">Pobočka VoZP ČR Plzeň</option>
+               	<option value="4">Pobočka VoZP ČR Brno</option>
+               	<option value="5">Pobočka VoZP Praha</option>
+               	<option value="6">Pobočka VoZP Olomouc</option>
+               	<option value="7">Pobočka VoZP České Budějovice</option>
+               	<option value="8">Pobočka VoZP Hradec Králové</option>
+               	<option value="9">Pobočka VoZP Ústí na Labem</option>
               </select>
             </div>
             <div class="row">
