@@ -5,6 +5,19 @@
 
 $mojeid = $_GET['id'];
 
+// kontrola zda je ID předáno a zda existuje
+if (!isset($mojeid)) {
+  $_SESSION["ErrorMessage"]="Špatný požadavek!";
+  Redirect_to("index.php");
+  }
+  $sql  = "SELECT * FROM ab_addressbook  WHERE id= '$mojeid'";
+  $stmt =$ConnectingDB->query($sql);
+  $Result=$stmt->rowcount();
+  if ($Result!=1) {
+  $_SESSION["ErrorMessage"]="Kontakt neexistuje!";
+  Redirect_to("index.php");
+
+
 if(isset($_POST["Submit"])){
   $firstnameU  = $_POST["firstname"];
   $lastnameU   = $_POST["lastname"];
@@ -58,6 +71,7 @@ if(isset($_POST["Submit"])){
       Redirect_to("edit.php");
     }
   }
+}
 }
 ?>
 

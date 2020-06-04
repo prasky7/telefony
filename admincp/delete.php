@@ -5,6 +5,7 @@
 
 $mojeid = $_GET['id'];
 
+
 global $ConnectingDB;
 $sql2  = "SELECT * FROM ab_addressbook WHERE id='$mojeid'";
 $stmt2 = $ConnectingDB->query($sql2);
@@ -21,6 +22,18 @@ while ($DataRows = $stmt2->fetch()) {
   $kancelar2  = htmlspecialchars($DataRows["role"]);
   }
 
+  // kontrola zda je ID předáno a zda existuje
+  if (!isset($mojeid)) {
+    $_SESSION["ErrorMessage"]="Špatný požadavek!";
+    Redirect_to("index.php");
+    }
+    $sql  = "SELECT * FROM ab_addressbook  WHERE id= '$mojeid'";
+    $stmt =$ConnectingDB->query($sql);
+    $Result=$stmt->rowcount();
+    if ($Result!=1) {
+    $_SESSION["ErrorMessage"]="Kontakt neexistuje!";
+    Redirect_to("index.php");
+
 if(isset($_POST["Submit"])){
   global $ConnectingDB;
   $sql = "DELETE FROM ab_addressbook WHERE id='$mojeid'";
@@ -32,6 +45,7 @@ if(isset($_POST["Submit"])){
     $_SESSION["ErrorMessage"]= "Something went wrong. Try Again !";
     Redirect_to("delete.php");
   }
+}
 }
 ?>
 
