@@ -6,3 +6,7 @@ style="min-height:400px;"
 
 ?id=<?php echo $mojeid; ?>
 localhost/telefony/admincp/edit.php?id=700
+
+
+teladmin
+tElco_VoZP2020

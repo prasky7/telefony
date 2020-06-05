@@ -2,7 +2,7 @@
 <?php $currentPage = "Administrace telefonního seznamu"; ?>
 <?php require_once("includes/header.php"); ?>
 
-
+<?php Confirm_Login(); ?> 
 
 <!-- obsah -->
 <div class="text-center">

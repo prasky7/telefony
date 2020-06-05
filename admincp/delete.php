@@ -1,6 +1,9 @@
 <!-- hlavicka -->
 <?php $currentPage = "Smazání kontaktu"; ?>
 <?php require_once("includes/header.php"); ?>
+
+<?php Confirm_Login(); ?> 
+
 <?php
 
 $mojeid = $_GET['id'];

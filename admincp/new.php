@@ -2,6 +2,8 @@
 <?php $currentPage = "Nový kontakt"; ?>
 <?php require_once("includes/header.php"); ?>
 
+<?php Confirm_Login(); ?> 
+
 <?php
 if(isset($_POST["Submit"])){
   $firstname  = $_POST["firstname"];
