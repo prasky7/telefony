@@ -19,7 +19,7 @@ if (!isset($mojeid)) {
   if ($Result!=1) {
   $_SESSION["ErrorMessage"]="Kontakt neexistuje!";
   Redirect_to("index.php");
-
+  }
 
 if(isset($_POST["Submit"])){
   $firstnameU  = $_POST["firstname"];
@@ -74,7 +74,6 @@ if(isset($_POST["Submit"])){
       Redirect_to("edit.php");
     }
   }
-}
 }
 ?>
 

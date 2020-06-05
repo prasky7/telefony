@@ -2,7 +2,7 @@
 <?php $currentPage = "Smazání kontaktu"; ?>
 <?php require_once("includes/header.php"); ?>
 
-<?php Confirm_Login(); ?> 
+<?php Confirm_Login(); ?>
 
 <?php
 
@@ -36,6 +36,7 @@ while ($DataRows = $stmt2->fetch()) {
     if ($Result!=1) {
     $_SESSION["ErrorMessage"]="Kontakt neexistuje!";
     Redirect_to("index.php");
+    }
 
 if(isset($_POST["Submit"])){
   global $ConnectingDB;
@@ -48,7 +49,6 @@ if(isset($_POST["Submit"])){
     $_SESSION["ErrorMessage"]= "Something went wrong. Try Again !";
     Redirect_to("delete.php");
   }
-}
 }
 ?>
 
