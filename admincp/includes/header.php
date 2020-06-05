@@ -39,10 +39,18 @@
                   <a href="http://www2.vozp.cz/telefony/" target="_blank" class="nav-link text-warning"> <i class="fas fa-phone-alt text-success"></i> On-line telefonní seznam VoZP</a>
                 </li>
               </ul>
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="Logout.php" class="nav-link text-danger">
-                  <i class="fas fa-user-times"></i> Logout</a></li>
-              </ul>
+              <?php
+              if (isset($_SESSION["UserId"])) {
+              echo "<ul class=\"navbar-nav ml-auto\">";
+              echo "<li class=\"nav-item\"><a href=\"logout.php\" class=\"nav-link text-danger\">";
+              echo "<i class=\"fas fa-user-times\"></i> Odhlásit</a></li>";
+              echo "</ul>";
+              } else {
+                echo "<ul class=\"navbar-nav ml-auto\">";
+                echo "<li class=\"nav-item\"><a href=\"login.php\" class=\"nav-link text-success\">";
+                echo "<i class=\"fas fa-user-times\"></i> Přihlásit</a></li>";
+                echo "</ul>";
+              } ?>
               </div>
             </div>
           </nav>

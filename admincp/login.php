@@ -59,7 +59,7 @@ if (isset($_POST["Submit"])) {
               <label for="username"><span class="FieldInfo">Jméno:</span></label>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text text-white bg-info"> <i class="fas fa-user"></i> </span>
+                  <span class="input-group-text text-white bg-success"> <i class="fas fa-user"></i> </span>
                 </div>
                 <input type="text" class="form-control" name="Username" id="username" value="">
               </div>
@@ -68,12 +68,12 @@ if (isset($_POST["Submit"])) {
               <label for="password"><span class="FieldInfo">Heslo</span></label>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text text-white bg-info"> <i class="fas fa-lock"></i> </span>
+                  <span class="input-group-text text-white bg-success"> <i class="fas fa-lock"></i> </span>
                 </div>
                 <input type="password" class="form-control" name="Password" id="password" value="">
               </div>
             </div>
-            <input type="submit" name="Submit" class="btn btn-info btn-block" value="Přihlásit">
+            <input type="submit" name="Submit" class="btn btn-success btn-block" value="Přihlásit">
           </form>
 
         </div>
