@@ -13,3 +13,7 @@ tElco_VoZP2020
 
 
 $sql = "SELECT * FROM ab_users WHERE username=:userName AND md5_pass=md5(:passWord) LIMIT 1";
+
+TODO:
+SQL Injection
+Změna pobočky
