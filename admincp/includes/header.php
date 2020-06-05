@@ -20,7 +20,7 @@
           <div style="height:6px; background:green;"></div>
           <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-              <a href="index.php" class="navbar-brand"> <i class="fas fa-phone-square-alt"></i> Telefonní seznam VoZP</a>
+              <a href="index.php" class="navbar-brand"> <i class="fas fa-phone-square-alt"></i> Admin Control Panel TS VoZP</a>
               <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapseCMS">
                 <span class="navbar-toggler-icon"></span>
               </button>
