@@ -5,9 +5,10 @@ function Redirect_to($New_Location){
   exit;
 }
 
+
 function Login_Attempt($UserName,$Password){
   global $ConnectingDB;
-  $sql = "SELECT * FROM ab_users WHERE username=:userName AND md5_pass=:passWord LIMIT 1";
+  $sql = "SELECT * FROM ab_users WHERE username=:userName AND md5_pass=md5(:passWord) LIMIT 1";
   $stmt = $ConnectingDB->prepare($sql);
   $stmt->bindValue(':userName',$UserName);
   $stmt->bindValue(':passWord',$Password);
@@ -19,6 +20,8 @@ function Login_Attempt($UserName,$Password){
     return null;
   }
 }
+
+
 function Confirm_Login(){
 if (isset($_SESSION["UserId"])) {
   return true;

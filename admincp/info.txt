@@ -10,3 +10,6 @@ localhost/telefony/admincp/edit.php?id=700
 
 teladmin
 tElco_VoZP2020
+
+
+$sql = "SELECT * FROM ab_users WHERE username=:userName AND md5_pass=md5(:passWord) LIMIT 1";
