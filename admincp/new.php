@@ -2,7 +2,7 @@
 <?php $currentPage = "Nový kontakt"; ?>
 <?php require_once("includes/header.php"); ?>
 
-<?php Confirm_Login(); ?> 
+<?php Confirm_Login(); ?>
 
 <?php
 if(isset($_POST["Submit"])){
@@ -44,7 +44,7 @@ if(isset($_POST["Submit"])){
     $stmt->bindValue(':Kancelar',$kancelar);
     $Execute=$stmt->execute();
     if($Execute){
-      $_SESSION["SuccessMessage"]="Kontakt: " . $fistname . " " .$lastname. "s  ID: " .$ConnectingDB->lastInsertId()." je  přidaný do pobočky ID: " . $groupid;
+      $_SESSION["SuccessMessage"]="Kontakt: " . $firstname . " " . $lastname . " s  ID: " .$ConnectingDB->lastInsertId()." je  přidaný do pobočky ID: " . $groupid;
       // prirad posledni ID ke zvolene pobocce
       $last_id = $ConnectingDB->lastInsertId();
       $sql1 = "INSERT INTO ab_address_in_groups (id,group_id)";
