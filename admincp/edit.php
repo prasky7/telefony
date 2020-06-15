@@ -31,7 +31,7 @@ if(isset($_POST["Submit"])){
   $voipU       = $_POST["voip"];
   $lokalitaU   = $_POST["kancelar"];
   $kancelarU   = $_POST["role"];
-  $groupidU    = $_POST["groups"];
+  $groupidU    = $_POST["groups"] ?? '';
 
   if(empty($firstnameU)){
     $_SESSION["ErrorMessage"]= "Jméno nesmí být prázdné";
@@ -62,7 +62,7 @@ if(isset($_POST["Submit"])){
     if($Execute){
         $_SESSION["SuccessMessage"]="Kontakt je aktualizovaný";
         // prirad posledni ID ke zvolene pobocce
-        if (isset($groupidU)) {
+        if (!empty($groupidU)) {
         global $ConnectingDB;
         $sql1 = "UPDATE ab_address_in_groups
                 SET group_id='$groupidU'

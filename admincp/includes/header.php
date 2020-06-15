@@ -1,7 +1,7 @@
 <?php
 ob_start();
 // docane reseni
-error_reporting(0);
+// error_reporting(0);
  ?>
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/sessions.php"); ?>
