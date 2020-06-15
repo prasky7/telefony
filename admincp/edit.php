@@ -71,15 +71,9 @@ if(isset($_POST["Submit"])){
         $Execute1=$stmt1->execute();
         Redirect_to("index.php");
         }
-<<<<<<< HEAD
         $_SESSION["ErrorMessage"]= "Zadejte pobočku prosím, pokud se změnila.";
           } else {
             $_SESSION["ErrorMessage"]= "Něco se pokazilo, zkuste to prosím znovu !";
-=======
-        $_SESSION["ErrorMessage"]= "Zadejte pobočku prosím !";
-          }else {
-            $_SESSION["ErrorMessage"]= "Something went wrong. Try Again !";
->>>>>>> 3a3221fefbceb3003a5c413faba57f7ab83dcabd
             Redirect_to("edit.php");
           }
   }
