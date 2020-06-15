@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Restricted access"
+AuthUserFile c:\xampp\htdocs\telefony\admincp\.htpasswd
+require valid-user
