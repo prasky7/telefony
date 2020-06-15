@@ -33,7 +33,6 @@ if(isset($_POST["Submit"])){
   $kancelarU   = $_POST["role"];
   $groupidU    = $_POST["groups"];
 
-
   if(empty($firstnameU)){
     $_SESSION["ErrorMessage"]= "Jméno nesmí být prázdné";
     Redirect_to("edit.php");
@@ -61,18 +60,22 @@ if(isset($_POST["Submit"])){
     $stmt->bindValue(':Kancelar',$kancelarU);
     $Execute=$stmt->execute();
     if($Execute){
-      $_SESSION["SuccessMessage"]="Kontakt je aktualizovaný";
-      // prirad posledni ID ke zvolene pobocce
-      // $sql1 = "UPDATE ab_address_in_groups
-      //         SET group_id='$groupidU'
-      //         WHERE id='$mojeid'";
-      // $stmt1 = $ConnectingDB->prepare($sql1);
-      // $Execute1=$stmt1->execute();
-      // Redirect_to("index.php");
-    }else {
-      $_SESSION["ErrorMessage"]= "Something went wrong. Try Again !";
-      Redirect_to("edit.php");
-    }
+        $_SESSION["SuccessMessage"]="Kontakt je aktualizovaný";
+        // prirad posledni ID ke zvolene pobocce
+        if (isset($groupidU)) {
+        global $ConnectingDB;
+        $sql1 = "UPDATE ab_address_in_groups
+                SET group_id='$groupidU'
+                WHERE id='$mojeid'";
+        $stmt1 = $ConnectingDB->prepare($sql1);
+        $Execute1=$stmt1->execute();
+        Redirect_to("index.php");
+        }
+        $_SESSION["ErrorMessage"]= "Zadejte pobočku prosím, pokud se změnila.";
+          } else {
+            $_SESSION["ErrorMessage"]= "Něco se pokazilo, zkuste to prosím znovu !";
+            Redirect_to("edit.php");
+          }
   }
 }
 ?>
@@ -151,6 +154,7 @@ if(isset($_POST["Submit"])){
             <div class="form-group">
               <label for="groups"> <span class="FieldInfo"> Vyberte pobočku: </span></label>
                <select class="form-control" id="groups"  name="groups">
+                <option value="" selected disabled>Vyberte pobočku!</option>
                 <option value="2">Ústředí VOZP ČR</option>
                	<option value="3">Pobočka VoZP ČR Plzeň</option>
                	<option value="4">Pobočka VoZP ČR Brno</option>
