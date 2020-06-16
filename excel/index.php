@@ -1,18 +1,26 @@
 <?php
-
-
-require 'vendor/autoload.php';
-
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
-// $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
-// $spreadsheet = $reader->load("upload/test.xlsx");
-$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
-$reader->setLoadSheetsOnly(["aktuální"]);
-$spreadsheet = $reader->load("upload/test.xlsx");
-$writer = new \PhpOffice\PhpSpreadsheet\Writer\Pdf\Mpdf($spreadsheet);
-$writer->setSheetIndex(0);
-$writer->save("test.pdf");
-
+session_start();
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PHP File Upload</title>
+</head>
+<body>
+  <?php
+    if (isset($_SESSION['message']) && $_SESSION['message'])
+    {
+      printf('<b>%s</b>', $_SESSION['message']);
+      unset($_SESSION['message']);
+    }
+  ?>
+  <form method="POST" action="upload.php" enctype="multipart/form-data">
+    <div>
+      <span>Upload a File:</span>
+      <input type="file" name="uploadedFile" />
+    </div>
+
+    <input type="submit" name="uploadBtn" value="Upload" />
+  </form>
+</body>
+</html>
